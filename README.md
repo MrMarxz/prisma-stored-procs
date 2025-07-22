@@ -91,6 +91,60 @@ Modern CSS Techniques for 2024    | David Brown   | 1840       | 1          | 20
 Getting Started with Next.js 14   | Alice Johnson | 1250       | 3          | 2024-01-15
 ```
 
+## 🔧 Setup
+
+> **Important**: Your procedures' types and naming should align with Prisma conventions for seamless integration.
+
+### Database Connection
+
+This project uses a **Vercel-hosted PostgreSQL database**. Ensure you have all required credentials:
+- Host
+- Database name  
+- Username
+- Password
+
+### Setting Up DBeaver (Recommended DBMS)
+
+Since Prisma doesn't support advanced database management, we recommend **DBeaver** for stored procedure development.
+
+#### Step-by-Step Connection:
+
+1. **Create New Connection**
+    - Click **"Add Connection"** (top left)
+    - Select **PostgreSQL** → Next
+
+2. **Configure Connection**
+    - Choose **"Connect by Host"**
+    - Enter **Host** and **Database** details from Vercel
+    - Set Authentication to **"Database Native"**
+    - Add your **Username** and **Password**
+
+3. **Test & Finalize**
+    - Click **"Test Connection"** (bottom left)
+    - Once successful, click **"Finish"**
+    - Your database appears in the left pane
+
+### Deploying Stored Procedures
+
+1. **Open SQL Editor**
+    - Press `Ctrl+]` to create a new SQL script
+
+2. **Add Procedures**
+    - Copy and paste the stored procedure code
+    - Review the code for accuracy
+
+3. **Execute**
+    - Press `Ctrl+Enter` to run the script
+    - Select the correct database when prompted
+    - Procedures are now deployed to your database
+
+### Verification
+
+After deployment, you can verify the procedures exist by checking the database schema in DBeaver under:
+```
+Database → Schemas → public → Functions
+```
+
 ## 🚀 Features
 
 ### Database Management

@@ -175,7 +175,7 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground">No posts found. Click "Populate Database" to add sample data!</p>
+              <p className="text-muted-foreground">No posts found. Click {"'Populate Database'"} to add sample data!</p>
             )}
           </CardContent>
         </Card>
