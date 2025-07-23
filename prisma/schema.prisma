@@ -2,12 +2,12 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Author {
@@ -46,9 +46,9 @@ model Post {
   authorId    Int
   categoryId  Int
   viewCount   Int       @default(0)
-  
-  author   Author   @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  category Category @relation(fields: [categoryId], references: [id])
+
+  author   Author    @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  category Category  @relation(fields: [categoryId], references: [id])
   tags     PostTag[]
 
   @@index([published, publishedAt])
@@ -69,7 +69,7 @@ model Tag {
 model PostTag {
   postId Int
   tagId  Int
-  
+
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
 
@@ -77,3 +77,13 @@ model PostTag {
   @@map("post_tags")
 }
 
+// * Similarity search model
+model Fact {
+  id        String                      @id @default(cuid())
+  content   String
+  embedding Unsupported("vector(1536)") // OpenAI embeddings are 1536 dimensions
+  createdAt DateTime                    @default(now())
+  updatedAt DateTime                    @updatedAt
+
+  @@map("facts")
+}
